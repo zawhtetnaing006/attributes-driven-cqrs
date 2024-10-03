@@ -163,7 +163,7 @@ class CreateUserCommand {
 
 class LoggingMiddleware implements MiddlewareInterface 
 {
-    public function process(object $command, $result = null): void 
+    public function process($command, $result)
     {
         echo "Logging: Command " . get_class($command) . " is being processed.";
     }
