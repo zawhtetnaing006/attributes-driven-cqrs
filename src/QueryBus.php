@@ -9,6 +9,7 @@ class QueryBus{
     private static $instance = null;
     private $allowMiddlewareRegistration = true;
 
+    private $context = [];
     private function __construct(){}
     private function __clone() {}
 
@@ -52,5 +53,16 @@ class QueryBus{
             throw new MiddlewareRegistrationClosedException($middlewareClass);
         }
         GlobalMiddleware::getInstance()->registerAfterHandleQueryMiddleware($middlewareClass);
+    }
+
+    
+    public function setContext(string $key, mixed $value): void
+    {
+        $this->context[$key] = $value;
+    }
+
+    public function getContext(string $key): mixed
+    {
+        return $this->context[$key] ?? null;
     }
 }

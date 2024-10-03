@@ -9,6 +9,7 @@ use Zaw\AttributeDrivenCqrs\Middlewares\GlobalMiddleware;
 class CommandBus{
     private static $instance = null;
     private $allowMiddlewareRegistration = true;
+    private $context = [];
 
     private function __construct(){}
     private function __clone() {}
@@ -63,5 +64,15 @@ class CommandBus{
     public function getAfterHandleMiddlewares(): array
     {
         return GlobalMiddleware::getInstance()->getAfterHandleCommandMiddlewares();
+    }
+
+    public function setContext(string $key, mixed $value): void
+    {
+        $this->context[$key] = $value;
+    }
+
+    public function getContext(string $key): mixed
+    {
+        return $this->context[$key] ?? null;
     }
 }
