@@ -2,27 +2,15 @@
 namespace Zaw\AttributeDrivenCqrs\Handlers;
 use Zaw\AttributeDrivenCqrs\Attributes\HandleCommandWith;
 use Zaw\AttributeDrivenCqrs\Attributes\HandleQueryWith;
+use Zaw\AttributeDrivenCqrs\Builders\DIContainerBuilder;
 use Zaw\AttributeDrivenCqrs\Builders\ReflectionBuilder;
 use Zaw\AttributeDrivenCqrs\Exceptions\MultipleHandlersFoundException;
 use Zaw\AttributeDrivenCqrs\Exceptions\MultipleQueryHandlersFoundException;
 use Zaw\AttributeDrivenCqrs\Exceptions\NoHandlersFoundException;
 use Zaw\AttributeDrivenCqrs\Exceptions\NoQueryHandlersFoundException;
-use DI\Container;
-use DI\ContainerBuilder;
 
 class Handler
 {
-    private static ?Container $container = null;
-    private static function getContainer(): Container
-    {
-        if (self::$container === null) {
-            $containerBuilder = new ContainerBuilder();
-            self::$container = $containerBuilder->build();
-        }
-
-        return self::$container;
-    }
-
     public static function handleCommand(object $command): mixed
     {
         $reflectionInstance = ReflectionBuilder::getReflectionInstance($command);
@@ -37,7 +25,7 @@ class Handler
         
         $attribute = reset($attributes);
         $handler = $attribute->newInstance();
-        $commandHandler = self::getContainer()->get($handler->handler);
+        $commandHandler = DIContainerBuilder::getContainer()->get($handler->handler);
 
         $result = $commandHandler->handle($command);
         return $result;
@@ -58,7 +46,7 @@ class Handler
         
         $attribute = reset($attributes);
         $handler = $attribute->newInstance();
-        $commandHandler = self::getContainer()->get($handler->handler);
+        $commandHandler = DIContainerBuilder::getContainer()->get($handler->handler);
 
         //Run command handler
         $result = $commandHandler->handle($query);

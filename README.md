@@ -138,6 +138,7 @@ class GetProductHandler {
 
 - Middlewares allow you to execute custom logic before/after a command or query handler is executed.
 - Middlewares must implement the `MiddlewareInterface`, which enforces the implementation of the `process` method. The `process` method receives the command or query as the first parameter and the return value from the `handle` method of the CommandHandler/QueryHandler as the second parameter (if applicable).
+- **Dependency Injection Support**: Middlewares can now take advantage of dependency injection.
 
 Middlewares can be applied in two ways:
 

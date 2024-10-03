@@ -6,7 +6,7 @@ class MiddlewareBuilder
     final public static function getMiddleWareInstance($middlewareClass)
     {
         if (!isset(self::$middlewareInstances[$middlewareClass])) {
-            self::$middlewareInstances[$middlewareClass] = new $middlewareClass();
+            self::$middlewareInstances[$middlewareClass] = DIContainerBuilder::getContainer()->get($middlewareClass);
         }
 
         return self::$middlewareInstances[$middlewareClass];

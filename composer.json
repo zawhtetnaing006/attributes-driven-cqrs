@@ -1,6 +1,6 @@
 {
     "name": "zaw/attribute-driven-cqrs",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "A PHP package that simplifies the implementation of the CQRS pattern using attributes, enabling cleaner and more efficient command/query handling.",
     "type": "library",
     "license": "MIT",
