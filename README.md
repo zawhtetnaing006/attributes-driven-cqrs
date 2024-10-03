@@ -201,4 +201,4 @@ This package is licensed under the [MIT License](LICENSE).
 
 ## Contributing
 
-If you’d like to contribute, feel free to open an issue or submit a pull request. We appreciate any help to make the package better!
+We welcome contributions! If you'd like to help improve this package, please open an issue or submit a pull request or contact me directly at [zawhtetnaing006@gmail.com](mailto:zawhtetnaing006@gmail.com). Your feedback is invaluable in making this package better for everyone!
