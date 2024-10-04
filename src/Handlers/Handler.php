@@ -46,10 +46,9 @@ class Handler
         
         $attribute = reset($attributes);
         $handler = $attribute->newInstance();
-        $commandHandler = DIContainerBuilder::getContainer()->get($handler->handler);
+        $queryHandler = DIContainerBuilder::getContainer()->get($handler->handler);
 
-        //Run command handler
-        $result = $commandHandler->handle($query);
+        $result = $queryHandler->handle($query);
         return $result;
     }
 }
