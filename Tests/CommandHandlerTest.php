@@ -7,7 +7,6 @@ use Zaw\AttributeDrivenCqrs\Exceptions\HandlerNotFoundException;
 use Zaw\AttributeDrivenCqrs\Exceptions\NoHandlersFoundException;
 use Zaw\AttributeDrivenCqrs\Exceptions\MultipleHandlersFoundException;
 use Zaw\AttributeDrivenCqrs\Exceptions\InvalidCommandHandlerException;
-use Zaw\AttributeDrivenCqrs\Handlers\Interfaces\CommandHandlerInterface;
 
 #[HandleCommandWith(InvalidCommandHandler::class)]
 class CreateProductCommand {
@@ -28,16 +27,16 @@ class MultipleHandlersCommand {
     public function __construct(public string $username, public string $email) {}
 }
 class InvalidCommandHandler {
-    public function handle(object $command): void {}
+    public function process(object $command): void {}
 }
 
-class ValidHandlerOne implements CommandHandlerInterface{
+class ValidHandlerOne {
     public function handle(object $command): mixed {
         return "Success";
     }
 }
 
-class ValidHandlerTwo implements CommandHandlerInterface{
+class ValidHandlerTwo {
     public function handle(object $command): mixed {
         return "Success";
     }

@@ -36,7 +36,7 @@ class GetUserQuery
 
 class InvalidQueryHandler
 {
-    public function handle(object $query)
+    public function process(object $query)
     {
 
     }

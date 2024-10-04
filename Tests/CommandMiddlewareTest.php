@@ -9,7 +9,7 @@ use Zaw\AttributeDrivenCqrs\Exceptions\MiddlewareRegistrationClosedException;
 use Zaw\AttributeDrivenCqrs\Middlewares\Interfaces\MiddlewareInterface;
 
 class TestMiddleware implements MiddlewareInterface {
-    public function process(object $command, $result = null): void {
+    public function process($command, $result): void {
     }
 }
 

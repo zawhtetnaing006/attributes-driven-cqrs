@@ -1,6 +1,5 @@
 <?php
 use Zaw\AttributeDrivenCqrs\Attributes\HandleQueryWith;
-use Zaw\AttributeDrivenCqrs\Handlers\Interfaces\QueryHandlerInterface;
 use Zaw\AttributeDrivenCqrs\QueryBus;
 use PHPUnit\Framework\TestCase;
 
@@ -15,7 +14,7 @@ class GetProductQuery{
     }
 }
 
-class GetProductHandler implements QueryHandlerInterface{
+class GetProductHandler{
     public function handle(object $query) {
         return json_encode(['productId' => $query->getProductId()]);
     }

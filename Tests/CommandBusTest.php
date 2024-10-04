@@ -3,7 +3,6 @@
 use PHPUnit\Framework\TestCase;
 use Zaw\AttributeDrivenCqrs\CommandBus;
 use Zaw\AttributeDrivenCqrs\Attributes\HandleCommandWith;
-use Zaw\AttributeDrivenCqrs\Handlers\Interfaces\CommandHandlerInterface;
 use Zaw\AttributeDrivenCqrs\Middlewares\GlobalMiddleware;
 use Zaw\AttributeDrivenCqrs\Middlewares\Interfaces\MiddlewareInterface;
 
@@ -13,7 +12,7 @@ class CreateUserCommand {
     public function __construct(public string $username, public string $email) {}
 }
 
-class CreateUserHandler implements CommandHandlerInterface {
+class CreateUserHandler {
     public function handle(object $command): string {
         return json_encode([
             "username" => $command->username,
@@ -23,7 +22,7 @@ class CreateUserHandler implements CommandHandlerInterface {
 }
 
 class ValidMiddleware implements MiddlewareInterface {
-    public function process(object $command, $result = null)
+    public function process($command, $result)
     {
         echo 'Valid middleware processed';
     }
